@@ -1,0 +1,31 @@
+#!/bin/bash
+
+TYPE=$1
+PROJECT=$2
+
+if [ $TYPE == 'osc' ]; then
+  :
+elif [ $TYPE == 'delfx' ]; then
+  :
+elif [ $TYPE == 'revfx' ]; then
+  :
+elif [ $TYPE == 'modfx' ]; then
+  :
+else
+  echo 'invalid TYPE'
+  exit 1
+fi
+
+if [ -z $PROJECT ]; then
+  echo 'PROJECT is required'
+  exit 1
+fi
+
+PROJECTDIR=$TYPE/projects/$PROJECT
+
+mkdir $PROJECTDIR
+cp -a $TYPE/template/* $PROJECTDIR
+mv $PROJECTDIR/template.cpp $PROJECTDIR/$PROJECT.cpp
+sed -i "" -e "s/\$PROJECT/$PROJECT/g" $PROJECTDIR/manifest.json
+sed -i "" -e "s/\$PROJECT/$PROJECT/g" $PROJECTDIR/project.mk
+

@@ -29,3 +29,4 @@ mv $PROJECTDIR/template.cpp $PROJECTDIR/$PROJECT.cpp
 sed -i "" -e "s/\$PROJECT/$PROJECT/g" $PROJECTDIR/manifest.json
 sed -i "" -e "s/\$PROJECT/$PROJECT/g" $PROJECTDIR/project.mk
 
+echo "generate: $PROJECTDIR"

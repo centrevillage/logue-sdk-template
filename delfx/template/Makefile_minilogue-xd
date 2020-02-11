@@ -1,0 +1,10 @@
+PLATFORM = minilogue-xd
+# your logue-sdk dir
+LOGUESDKDIR ?= ../../../../logue-sdk
+PLATFORMDIR = $(LOGUESDKDIR)/platform/$(PLATFORM)
+PKGEXTNAME = mnlgxdunit
+MCUSERIESNAME = STM32F401xC
+PROJECTDIR = .
+
+include ./project.mk
+include ../../platform_stm32f4.mk

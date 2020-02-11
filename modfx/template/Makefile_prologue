@@ -1,0 +1,9 @@
+PLATFORM = prologue
+LOGUESDKDIR ?= ../../../../logue-sdk
+PLATFORMDIR = $(LOGUESDKDIR)/platform/$(PLATFORM)
+PKGEXTNAME = prlgunit
+MCUSERIESNAME = STM32F401xC
+PROJECTDIR = .
+
+include ./project.mk
+include ../../platform_stm32f4.mk

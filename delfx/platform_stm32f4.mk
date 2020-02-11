@@ -53,7 +53,7 @@ SZ   = $(GCC_BIN_PATH)/$(GCC_TARGET)size
 HEX  = $(CP) -O ihex
 BIN  = $(CP) -O binary
 
-LDDIR = $(PLATFORMDIR)/osc/ld
+LDDIR = $(PLATFORMDIR)/delfx/ld
 RULESPATH = $(LDDIR)
 LDSCRIPT = $(LDDIR)/userdelfx.ld
 DLIBS = -lm

@@ -94,7 +94,7 @@ ASMSRC = $(UASMSRC)
 
 ASMXSRC = $(UASMXSRC)
 
-CSRC = $(PLATFORMDIR)/osc/tpl/_unit.c $(UCSRC)
+CSRC = $(PLATFORMDIR)/modfx/tpl/_unit.c $(UCSRC)
 
 CXXSRC = $(UCXXSRC)
 

@@ -218,8 +218,9 @@ package:
 	@echo Packaging to ./$(PKGARCH)
 	@mkdir -p $(PKGDIR)
 	@cp -a $(MANIFEST) $(PKGDIR)/
-	@sed -i "" -e "s/\$$PROJECT/$(PROJECT)/g" $(PKGDIR)/$(MANIFEST)
-	@sed -i "" -e "s/\$$PLATFORM/$(PLATFORM)/g" $(PKGDIR)/$(MANIFEST)
+	@sed -i -e "s/\$$PROJECT/$(PROJECT)/g" $(PKGDIR)/$(MANIFEST)
+	@sed -i -e "s/\$$PLATFORM/$(PLATFORM)/g" $(PKGDIR)/$(MANIFEST)
+	@rm $(PKGDIR)/$(MANIFEST)-e
 	@cp -a $(BUILDDIR)/$(PROJECT).bin $(PKGDIR)/$(PAYLOAD)
 	@$(ZIP) $(ZIP_ARGS) $(PROJECT).zip $(PKGDIR)
 	@mv $(PROJECT).zip $(PKGARCH)

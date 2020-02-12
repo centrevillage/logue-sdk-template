@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $# -ne 2 ];
+  then echo "Usage: logue_gen [osc/delfx/revfx/modfx] [project_name]"
+  exit 1
+fi  
+
 TYPE=$1
 PROJECT=$2
 
@@ -21,12 +26,24 @@ if [ -z $PROJECT ]; then
   exit 1
 fi
 
+
 PROJECTDIR=$TYPE/projects/$PROJECT
+
+if [ -e $PROJECTDIR ]; then
+  echo Project $PROJECT already exists.
+  read -p "Overwite? [y/N]: " yn
+
+  case "$yn" in [yY]*) ;; *) echo "" ; exit ;; esac
+
+  rm -rf $PROJECTDIR
+fi  
+
+  
 
 mkdir $PROJECTDIR
 cp -a $TYPE/template/* $PROJECTDIR
 mv $PROJECTDIR/template.cpp $PROJECTDIR/$PROJECT.cpp
-sed -i "" -e "s/\$PROJECT/$PROJECT/g" $PROJECTDIR/manifest.json
-sed -i "" -e "s/\$PROJECT/$PROJECT/g" $PROJECTDIR/project.mk
+sed -i -e s/\$PROJECT/$PROJECT/g $PROJECTDIR/manifest.json
+sed -i -e s/\$PROJECT/$PROJECT/g $PROJECTDIR/project.mk
 
 echo "generate: $PROJECTDIR"

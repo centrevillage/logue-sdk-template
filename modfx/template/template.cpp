@@ -5,7 +5,7 @@ static dsp::BiQuad filter_l, filter_r;
 static float cutoff;
 
 void MODFX_INIT(uint32_t platform, uint32_t api) {
-  cutoff = 0.45f;
+  cutoff = 1.0f;
   filter_l.flush();
   filter_l.mCoeffs.setPoleLP(1.f - (cutoff*2.f));
   filter_r.flush();
